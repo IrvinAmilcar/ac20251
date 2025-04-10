@@ -20,35 +20,35 @@ public class Segurado {
         this.bonus = bonus;
     }
 
-    public String getNome() {
+    protected String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
+    protected void setNome(String nome) {
         this.nome = nome;
     }
 
-    public Endereco getEndereco() {
+    protected Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(Endereco endereco) {
+    protected void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 
-    public LocalDate getDataCriacao() {
+    protected LocalDate getDataCriacao() {
         return dataCriacao;
     }
 
-    public void setDataCriacao(LocalDate dataCriacao) {
+    protected void setDataCriacao(LocalDate dataCriacao) {
         this.dataCriacao = dataCriacao;
     }
 
-    public BigDecimal getBonus() {
+    protected BigDecimal getBonus() {
         return bonus;
     }
 
-    public void setBonus(BigDecimal bonus) {
+    protected void setBonus(BigDecimal bonus) {
         this.bonus = bonus;
     }
 
