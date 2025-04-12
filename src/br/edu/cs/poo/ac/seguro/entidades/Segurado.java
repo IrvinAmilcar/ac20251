@@ -9,8 +9,8 @@ public class Segurado {
     //Atributos:
     private String nome;
     private Endereco endereco;
-    protected LocalDate dataCriacao;
-    protected BigDecimal bonus;
+    private LocalDate dataCriacao;
+    private BigDecimal bonus;
 
     //Métodos especiais:
     public Segurado(String nome, Endereco endereco, LocalDate dataCriacao, BigDecimal bonus) {
@@ -20,19 +20,19 @@ public class Segurado {
         this.bonus = bonus;
     }
 
-    protected String getNome() {
+    public String getNome() {
         return nome;
     }
 
-    protected void setNome(String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
-    protected Endereco getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    protected void setEndereco(Endereco endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 
@@ -44,11 +44,11 @@ public class Segurado {
         this.dataCriacao = dataCriacao;
     }
 
-    protected BigDecimal getBonus() {
+    public BigDecimal getBonus() {
         return bonus;
     }
 
-    protected void setBonus(BigDecimal bonus) {
+    public void setBonus(BigDecimal bonus) {
         this.bonus = bonus;
     }
 

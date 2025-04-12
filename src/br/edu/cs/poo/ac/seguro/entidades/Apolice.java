@@ -16,5 +16,7 @@ public class Apolice {
     private BigDecimal valorPremio;
     private BigDecimal valorMaximoSegurado;
 
+    private String numero;
+
     //Os métodos especiais serão inicializados elo lombok automaticamente!
 }

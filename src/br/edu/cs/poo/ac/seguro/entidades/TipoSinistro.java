@@ -24,13 +24,19 @@ public enum TipoSinistro {
         return nome;
     }
 
-    public static TipoSinistro geTipoSinistro(int codigo){
-        for (TipoSinistro tipo : TipoSinistro.values()){
-            if (tipo.getCodigo() == codigo){
-                return tipo;
-            }
+    public static TipoSinistro getTipoSinistro(int codigo) {
+        if (codigo == 1) {
+            return TipoSinistro.COLISAO;
+        } else if (codigo == 2) {
+            return TipoSinistro.INCENDIO;
+        } else if (codigo == 3) {
+            return TipoSinistro.FURTO;
+        } else if (codigo == 4) {
+            return TipoSinistro.ENCHENTE;
+        } else if (codigo == 5) {
+            return TipoSinistro.DEPREDACAO;
+        } else {
+            return null;
         }
-        return null; 
     }
-
 }

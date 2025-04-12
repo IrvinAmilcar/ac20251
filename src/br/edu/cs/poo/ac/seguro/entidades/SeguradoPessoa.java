@@ -1,9 +1,11 @@
 package br.edu.cs.poo.ac.seguro.entidades;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class SeguradoPessoa extends Segurado {
+
+public class SeguradoPessoa extends Segurado implements Serializable {
 
     //Atributos:
     private String cpf;
