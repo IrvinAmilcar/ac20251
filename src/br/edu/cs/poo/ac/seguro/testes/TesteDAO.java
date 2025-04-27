@@ -1,27 +1,7 @@
 package br.edu.cs.poo.ac.seguro.testes;
 
-import java.io.File;
+//Atualização dada pelo professor na classe TesteDAO, a principio nenhuma modificação necessária
+//(4 classe implementada seguindo a ordem dada pelo professor e 1 classe modificada pelo professor)
 
-import org.junit.jupiter.api.BeforeEach;
-
-import br.edu.cesarschool.next.oo.persistenciaobjetos.CadastroObjetos;
-
-public abstract class TesteDAO {
-	protected CadastroObjetos cadastro;
-
-	protected abstract Class getClasse();
-
-	protected TesteDAO() {
-		cadastro = new CadastroObjetos(getClasse());
-	}
-
-	@BeforeEach
-	public void setUp() {
-		String sep = File.separator;
-		File dir = new File("." + sep + getClasse().getSimpleName());
-		File[] files = dir.listFiles();
-		for (File file : files) {
-			file.delete();
-		}
-	}
+public abstract class TesteDAO extends TesteAbstrato {
 }
