@@ -1,7 +1,5 @@
 package br.edu.cs.poo.ac.seguro.testes;
 
-//8 classe dada pelo professor implementada, buscar erro na linha (16)
-
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.math.BigDecimal;

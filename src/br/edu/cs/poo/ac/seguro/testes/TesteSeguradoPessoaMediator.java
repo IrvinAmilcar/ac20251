@@ -1,7 +1,5 @@
 package br.edu.cs.poo.ac.seguro.testes;
 
-//9 classe dada pelo professor implementada, buscar resposta para o erro na linha (21)
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -13,14 +11,15 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 
 import br.edu.cs.poo.ac.seguro.entidades.Endereco;
-import br.edu.cs.poo.ac.seguro.entidades.SeguradoEmpresa;
 import br.edu.cs.poo.ac.seguro.entidades.SeguradoPessoa;
 import br.edu.cs.poo.ac.seguro.mediators.SeguradoPessoaMediator;
 
 public class TesteSeguradoPessoaMediator extends TesteMediator {
     private SeguradoPessoaMediator med = SeguradoPessoaMediator.getInstancia();
+
+
     @Override
-    protected Class getClasse() {
+    protected Class<?> getClasse() {
         return SeguradoPessoa.class;
     }
 
