@@ -1,6 +1,5 @@
 package br.edu.cs.poo.ac.seguro.testes;
 
-//Está já é a 7 classe implementada pelo professor, buscar resposta pra o erro na linha (14)
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
