@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -17,6 +18,8 @@ public class Apolice implements Serializable {
     private BigDecimal valorFranquia;
     private BigDecimal valorPremio;
     private BigDecimal valorMaximoSegurado;
+
+    private LocalDate dataInicioVigencia; //Adicionado a partir da parte 2 de mediators
 
 
 
