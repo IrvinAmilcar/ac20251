@@ -18,7 +18,6 @@ public class Apolice implements Serializable {
     private BigDecimal valorFranquia;
     private BigDecimal valorPremio;
     private BigDecimal valorMaximoSegurado;
-
     private LocalDate dataInicioVigencia; //Adicionado a partir da parte 2 de mediators
 
 

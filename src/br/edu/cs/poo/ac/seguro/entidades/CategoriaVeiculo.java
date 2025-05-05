@@ -12,14 +12,14 @@ public enum CategoriaVeiculo {
     //Atributos:
     private int codigo;
     private String nome;
-    private PrecoAno[] precoAnos;
+    private PrecoAno[] precosAnos;
 
     //Métodos especiais:
     private CategoriaVeiculo(int codigo, String nome, PrecoAno[] precoAnos){
 
         this.codigo = codigo;
         this.nome = nome;
-        this.precoAnos = precoAnos;
+        this.precosAnos = precoAnos;
     }
 
     public int getCodigo() {
@@ -30,7 +30,7 @@ public enum CategoriaVeiculo {
         return nome;
     }
 
-    public PrecoAno[] getPrecoAnos() {
-        return precoAnos;
+    public PrecoAno[] getPrecosAnos() {
+        return precosAnos;
     }
 }
