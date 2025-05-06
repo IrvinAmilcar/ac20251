@@ -16,10 +16,8 @@ import br.edu.cs.poo.ac.seguro.mediators.SeguradoPessoaMediator;
 
 public class TesteSeguradoPessoaMediator extends TesteMediator {
     private SeguradoPessoaMediator med = SeguradoPessoaMediator.getInstancia();
-
-
     @Override
-    protected Class<?> getClasse() {
+    protected Class getClasse() {
         return SeguradoPessoa.class;
     }
 
@@ -131,7 +129,7 @@ public class TesteSeguradoPessoaMediator extends TesteMediator {
         String ret = med.incluirSeguradoPessoa(seg);
         assertEquals("CPF do segurado pessoa já existente", ret);
         SeguradoPessoa segBuscado = med.buscarSeguradoPessoa(cpf);
-        assertTrue(ComparadoraObjetosSerial.compareObjectsSerial(seg, segBuscado));
+        assertTrue(ComparadorObjetosSerial.compareObjectsSerial(seg, segBuscado));
         assertNotNull(segBuscado);
     }
 
@@ -177,7 +175,7 @@ public class TesteSeguradoPessoaMediator extends TesteMediator {
         assertEquals(null, ret);
         SeguradoPessoa segBuscado = med.buscarSeguradoPessoa(cpf);
         assertNotNull(segBuscado);
-        assertTrue(ComparadoraObjetosSerial.compareObjectsSerial(seg, segBuscado));
+        assertTrue(ComparadorObjetosSerial.compareObjectsSerial(seg, segBuscado));
     }
     @Test
     public void test14() {

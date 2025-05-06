@@ -1,12 +1,10 @@
 package br.edu.cs.poo.ac.seguro.testes;
 
-//Classe dada pelo professor, a principio nenhuma modificação necessária! (1 classe implementada)
-
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-class ComparadoraObjetosSerial {
+class ComparadorObjetosSerial {
     static boolean compareObjectsSerial(Serializable s1, Serializable s2) {
         ByteArrayOutputStream  bos1 = null;
         ByteArrayOutputStream  bos2 = null;
