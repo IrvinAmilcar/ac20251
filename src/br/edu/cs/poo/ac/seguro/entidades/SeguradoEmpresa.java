@@ -16,6 +16,10 @@ public class SeguradoEmpresa extends Segurado implements Serializable {
         this.ehLocadoraDeVeiculos = ehLocadoraDeVeiculos;
     }
 
+    public SeguradoEmpresa() {
+        super(); // agora funciona, pois Segurado tem um construtor sem parâmetros
+    }
+
     public String getCnpj() {
         return cnpj;
     }

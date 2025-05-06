@@ -20,6 +20,13 @@ public class Segurado {
         this.bonus = bonus;
     }
 
+    public Segurado() {
+        this.nome = "";
+        this.endereco = null;
+        this.dataCriacao = LocalDate.now();
+        this.bonus = BigDecimal.ZERO;
+    }
+
     public String getNome() {
         return nome;
     }
