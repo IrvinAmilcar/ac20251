@@ -179,4 +179,3 @@ public class TesteDAOGenerico extends TesteMediator {
         return RegistroImpl.class;
     }
 }
-
