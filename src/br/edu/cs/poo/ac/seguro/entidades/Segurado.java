@@ -1,10 +1,11 @@
 package br.edu.cs.poo.ac.seguro.entidades;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
 
-public class Segurado {
+public abstract class Segurado implements Registro {
 
     //Atributos:
     private String nome;
@@ -71,4 +72,8 @@ public class Segurado {
     public void debitarBonus(BigDecimal valor){
         bonus = bonus.subtract(valor);
     }
+
+    public abstract boolean isEmpresa();
+
+    // getIdUnico will be implemented by subclasses SeguradoPessoa and SeguradoEmpresa
 }

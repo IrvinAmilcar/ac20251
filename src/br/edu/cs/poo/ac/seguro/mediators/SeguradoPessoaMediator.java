@@ -1,24 +1,19 @@
 package br.edu.cs.poo.ac.seguro.mediators;
 
-import java.time.LocalDate;
-
 import br.edu.cs.poo.ac.seguro.daos.SeguradoPessoaDAO;
 import br.edu.cs.poo.ac.seguro.entidades.SeguradoPessoa;
 
-//ClASSE IMPLEMENTADA (3)
-
-@SuppressWarnings("unused")
 public class SeguradoPessoaMediator {
-
+    private static SeguradoPessoaMediator instancia;
     private SeguradoMediator seguradoMediator = SeguradoMediator.getInstancia();
-    private SeguradoPessoaDAO dao = new SeguradoPessoaDAO();
+    private SeguradoPessoaDAO seguradoPessoaDAO = new SeguradoPessoaDAO();
 
-    private static SeguradoPessoaMediator instancia = new SeguradoPessoaMediator();
-
-    private SeguradoPessoaMediator() {
-    }
+    private SeguradoPessoaMediator() {}
 
     public static SeguradoPessoaMediator getInstancia() {
+        if (instancia == null) {
+            instancia = new SeguradoPessoaMediator();
+        }
         return instancia;
     }
 
@@ -26,12 +21,15 @@ public class SeguradoPessoaMediator {
         if (StringUtils.ehNuloOuBranco(cpf)) {
             return "CPF deve ser informado";
         }
+
         if (cpf.length() != 11) {
             return "CPF deve ter 11 caracteres";
         }
+
         if (!ValidadorCpfCnpj.ehCpfValido(cpf)) {
             return "CPF com dígito inválido";
         }
+
         return null;
     }
 
@@ -39,57 +37,94 @@ public class SeguradoPessoaMediator {
         if (renda < 0) {
             return "Renda deve ser maior ou igual à zero";
         }
+
         return null;
     }
 
     public String validarSeguradoPessoa(SeguradoPessoa seg) {
-        if (seg == null) return "Segurado não pode ser nulo";
-        if (StringUtils.ehNuloOuBranco(seg.getNome()))
-            return "Nome deve ser informado";
-        if (seg.getEndereco() == null)
-            return "Endereço deve ser informado";
-        if (seg.getDataNascimento() == null)
+        // Validação dos atributos da superclasse
+        String msgErro = seguradoMediator.validarNome(seg.getNome());
+        if (msgErro != null) {
+            return msgErro;
+        }
+
+        msgErro = seguradoMediator.validarEndereco(seg.getEndereco());
+        if (msgErro != null) {
+            return msgErro;
+        }
+
+        msgErro = seguradoMediator.validarDataCriacao(seg.getDataNascimento());
+        if (msgErro != null) {
             return "Data do nascimento deve ser informada";
-        String erroCpf = validarCpf(seg.getCpf());
-        if (erroCpf != null)
-            return erroCpf;
-        String erroRenda = validarRenda(seg.getRenda());
-        if (erroRenda != null)
-            return erroRenda;
+        }
+
+        // Validação dos atributos específicos
+        msgErro = validarCpf(seg.getCpf());
+        if (msgErro != null) {
+            return msgErro;
+        }
+
+        msgErro = validarRenda(seg.getRenda());
+        if (msgErro != null) {
+            return msgErro;
+        }
+
         return null;
     }
 
     public String incluirSeguradoPessoa(SeguradoPessoa seg) {
-        String erro = validarSeguradoPessoa(seg);
-        if (erro != null) return erro;
+        String msgErro = validarSeguradoPessoa(seg);
+        if (msgErro != null) {
+            return msgErro;
+        }
 
-        boolean sucesso = dao.incluir(seg);
-        if (!sucesso) {
+        SeguradoPessoa segExistente = seguradoPessoaDAO.buscar(seg.getCpf());
+        if (segExistente != null) {
             return "CPF do segurado pessoa já existente";
         }
+
+        boolean ret = seguradoPessoaDAO.incluir(seg);
+        if (!ret) {
+            return "Erro ao incluir segurado pessoa";
+        }
+
         return null;
     }
 
     public String alterarSeguradoPessoa(SeguradoPessoa seg) {
-        String erro = validarSeguradoPessoa(seg);
-        if (erro != null) return erro;
+        String msgErro = validarSeguradoPessoa(seg);
+        if (msgErro != null) {
+            return msgErro;
+        }
 
-        boolean sucesso = dao.alterar(seg);
-        if (!sucesso) {
+        SeguradoPessoa segExistente = seguradoPessoaDAO.buscar(seg.getCpf());
+        if (segExistente == null) {
             return "CPF do segurado pessoa não existente";
         }
+
+        boolean ret = seguradoPessoaDAO.alterar(seg);
+        if (!ret) {
+            return "Erro ao alterar segurado pessoa";
+        }
+
         return null;
     }
 
     public String excluirSeguradoPessoa(String cpf) {
-        boolean sucesso = dao.excluir(cpf);
-        if (!sucesso) {
+        SeguradoPessoa segExistente = seguradoPessoaDAO.buscar(cpf);
+        if (segExistente == null) {
             return "CPF do segurado pessoa não existente";
         }
+
+        boolean ret = seguradoPessoaDAO.excluir(cpf);
+        if (!ret) {
+            return "Erro ao excluir segurado pessoa";
+        }
+
         return null;
     }
 
     public SeguradoPessoa buscarSeguradoPessoa(String cpf) {
-        return dao.buscar(cpf);
+        return seguradoPessoaDAO.buscar(cpf);
     }
 }

@@ -1,7 +1,5 @@
 package br.edu.cs.poo.ac.seguro.testes;
 
-//Atualização completa dada pelo professor (6 classe implementada da lista e 2 classe modificada)
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 

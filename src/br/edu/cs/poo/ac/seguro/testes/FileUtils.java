@@ -1,8 +1,8 @@
 package br.edu.cs.poo.ac.seguro.testes;
 
-//Mais uma classe dada pelo professor (2 classe implementada)
-
 import java.io.File;
+
+
 
 public class FileUtils {
 

@@ -1,59 +1,30 @@
 package br.edu.cs.poo.ac.seguro.daos;
 
-import br.edu.cesarschool.next.oo.persistenciaobjetos.CadastroObjetos;
+import br.edu.cs.poo.ac.seguro.entidades.Registro;
 import br.edu.cs.poo.ac.seguro.entidades.Sinistro;
 
-import java.io.Serializable;
+public class SinistroDAO extends DAOGenerico<Sinistro> {
 
-public class SinistroDAO extends DAOGenerico{
-
-    public SinistroDAO(){
-        cadastro = new CadastroObjetos(Sinistro.class);
+    @Override
+    public Class<Sinistro> getClasseEntidade() {
+        return Sinistro.class;
     }
 
-    public Sinistro buscar(String numero) {
-        return (Sinistro)cadastro.buscar(numero);
-    }
+    // buscar(String numero) is inherited and returns Sinistro
+    // incluir(Sinistro sinistro) is inherited
+    // alterar(Sinistro sinistro) is inherited
+    // excluir(String numero) is inherited
 
-    public boolean incluir(Sinistro segurado) {
-        if (buscar(segurado.getNumero()) != null) {
-            return false;
-        } else {
-            cadastro.incluir(segurado, segurado.getNumero());
-            return true;
-        }
-    }
-
-    public boolean alterar(Sinistro segurado) {
-        if (buscar(segurado.getNumero()) == null) {
-            return false;
-        } else {
-            cadastro.alterar(segurado, segurado.getNumero());
-            return true;
-        }
-    }
-
-    public boolean excluir(String numero) {
-        if (buscar(numero) == null) {
-            return false;
-        } else {
-            cadastro.excluir(numero);
-            return true;
-        }
-    }
-
+    @Override
     public Sinistro[] buscarTodos() {
-        Serializable[] objetosSerializaveis = cadastro.buscarTodos();
-
-        if (objetosSerializaveis == null) {
-            return null;
+        Registro[] registros = super.buscarTodos();
+        if (registros == null || registros.length == 0) {
+            return new Sinistro[0];
         }
-
-        Sinistro[] sinistros = new Sinistro[objetosSerializaveis.length];
-        for (int i = 0; i < objetosSerializaveis.length; i++) {
-            sinistros[i] = (Sinistro) objetosSerializaveis[i];
+        Sinistro[] sinistros = new Sinistro[registros.length];
+        for (int i = 0; i < registros.length; i++) {
+            sinistros[i] = (Sinistro) registros[i];
         }
-
         return sinistros;
     }
 }

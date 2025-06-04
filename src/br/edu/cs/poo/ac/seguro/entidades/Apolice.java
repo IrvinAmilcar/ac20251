@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Apolice implements Serializable {
+public class Apolice implements Registro {
     //Atributos:
     private String numero;
     private Veiculo veiculo;
@@ -20,7 +20,10 @@ public class Apolice implements Serializable {
     private BigDecimal valorMaximoSegurado;
     private LocalDate dataInicioVigencia; //Adicionado a partir da parte 2 de mediators
 
-
+    @Override
+    public String getIdUnico() {
+        return this.getNumero();
+    }
 
     //Os métodos especiais serão inicializados elo lombok automaticamente!
 }
